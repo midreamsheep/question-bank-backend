@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+        "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
+        "https://checkstyle.org/dtds/configuration_1_3.dtd">
+
+<module name="Checker">
+    <property name="charset" value="UTF-8"/>
+
+    <module name="TreeWalker">
+        <!-- 文档级注释：类/接口/枚举/记录（强制存在） -->
+        <module name="MissingJavadocType">
+            <property name="scope" value="private"/>
+        </module>
+
+        <!-- 方法级注释：所有方法与构造方法（强制存在） -->
+        <module name="MissingJavadocMethod">
+            <property name="scope" value="private"/>
+        </module>
+
+        <!-- 常量级注释：枚举常量 + static final 常量 -->
+        <module name="JavadocVariable">
+            <property name="accessModifiers" value="public,protected,package,private"/>
+            <!-- 说明：Checkstyle 不区分 static final 的独立 Token，这里通过命名约定识别常量（大写下划线）。 -->
+            <property name="tokens" value="ENUM_CONSTANT_DEF,VARIABLE_DEF"/>
+            <property name="ignoreNamePattern" value="^[a-z].*"/>
+        </module>
+    </module>
+</module>
