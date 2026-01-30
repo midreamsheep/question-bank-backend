@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: vegetable-forum-backend
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:local}
+
+server:
+  port: ${PORT:8080}
+
+id:
+  snowflake:
+    worker-id: ${SNOWFLAKE_WORKER_ID:1}
+    datacenter-id: ${SNOWFLAKE_DATACENTER_ID:1}
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+security:
+  jwt:
+    issuer: vegetable-forum
+    secret: ${JWT_SECRET:dev-secret-change-me}
+    expire-seconds: 86400
+  admin:
+    user-ids: []
+
+minio:
+  enabled: ${MINIO_ENABLED:false}
+  endpoint: ${MINIO_ENDPOINT:}
+  access-key: ${MINIO_ACCESS_KEY:}
+  secret-key: ${MINIO_SECRET_KEY:}
+  bucket: ${MINIO_BUCKET:vegetable-forum}
+  auto-create-bucket: ${MINIO_AUTO_CREATE_BUCKET:true}
+  presign-expire-seconds: ${MINIO_PRESIGN_EXPIRE_SECONDS:3600}
